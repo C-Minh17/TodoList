@@ -61,15 +61,17 @@ function HomeTodoList(){
   };
 
   const addTodo = async () => {
-    const dataTodo:ITodo = {
-      nameWork:dataInput,
-      status:false,
-      idUser:user.id,
+    if(dataInput){
+      const dataTodo:ITodo = {
+        nameWork:dataInput,
+        status:false,
+        idUser:user.id,
+      }
+      await postTodo(dataTodo)
+      successAdd()
+      setIsReload(!isReload)
+      setDataInput("")
     }
-    await postTodo(dataTodo)
-    successAdd()
-    setIsReload(!isReload)
-    setDataInput("")
   }
 
   useEffect(() => {
